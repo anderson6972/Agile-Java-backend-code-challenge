@@ -3,7 +3,6 @@ package com.primeit.agilejava.adapter.out.restclient;
 import com.primeit.agilejava.adapter.in.rest.dto.CustomUserDTO;
 import com.primeit.agilejava.port.out.RandomUserApiPort;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;

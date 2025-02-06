@@ -1,6 +1,5 @@
 package com.primeit.agilejava.adapter.in.rest.dto;
 
-import com.primeit.agilejava.domain.model.User;
 import com.primeit.agilejava.models.UserData;
 
 import java.util.List;

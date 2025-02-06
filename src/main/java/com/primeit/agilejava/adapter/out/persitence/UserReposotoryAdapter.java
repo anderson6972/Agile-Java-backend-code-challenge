@@ -4,7 +4,6 @@ import com.primeit.agilejava.domain.exception.UserNotFoundException;
 import com.primeit.agilejava.domain.model.User;
 import com.primeit.agilejava.port.out.UserRepositoryPort;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.beans.PropertyDescriptor;
