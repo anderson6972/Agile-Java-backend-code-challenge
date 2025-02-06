@@ -1,0 +1,82 @@
+Agile Contents - Desafío de código para backend en Java - README
+Desafío de código
+El propósito de esta prueba es validar tus habilidades técnicas y organizativas. No es un gran problema si no puedes completarla; preferimos un código limpio e incompleto pero funcional, antes que un código desorganizado y "feo". Está bien si estableces una duración máxima para el desafío.
+
+Debes utilizar el lenguaje de programación Java y Spring Boot. Aparte de eso, queda a tu criterio cómo estructurar el código y qué bibliotecas utilizar. También puedes usar cualquier herramienta de generación de código como Spring Initializr o JHipster.
+
+Por favor, crea un fork de este repositorio para que puedas trabajar en él como mejor te convenga. El único requisito es que todo el código debe estar disponible en la rama master una vez que hayas terminado. También puedes editar este documento si deseas incluir información relevante, como instrucciones de compilación y ejecución, que nos sean útiles.
+
+Ten en cuenta que, una vez finalizado el desafío de código, lo revisaremos y es posible que te pidamos realizar una revisión conjunta del código para conocer un poco más sobre el proyecto y su estructura.
+
+IMPORTANTE: Estaremos encantados de responder cualquier pregunta o escuchar cualquier sugerencia sobre el desafío de código, así que no dudes en preguntar.
+
+Funcionalidades
+La aplicación a desarrollar debe gestionar una colección de usuarios con la siguiente información:
+
+Nombre de usuario (único)
+Nombre
+Correo electrónico
+Género
+Foto (solo la URL)
+Los usuarios deben persistirse en una base de datos. Puedes usar cualquier base de datos de tu preferencia, ya sea relacional o no. Para mayor simplicidad, se recomienda usar una base de datos en memoria o una integrada en la propia aplicación.
+
+La aplicación debe proporcionar los siguientes servicios web en formato JSON:
+
+/api/users/ (GET): devuelve la lista de todos los usuarios.
+/api/users/{username}/ (GET): devuelve un único usuario.
+/api/users/ (POST): crea un usuario.
+/api/users/{username}/ (PUT): actualiza la información de un usuario.
+/api/users/{username}/ (DELETE): elimina un usuario.
+/api/users/generate/{number}/ (GET): genera un número de usuarios aleatorios según el parámetro proporcionado. Para crear los usuarios debes utilizar el servicio Random User Generator. Los usuarios generados se agregarán a la colección de usuarios existentes.
+/api/users/tree/ (GET): devuelve un árbol con los usuarios agrupados por país, estado y ciudad (esto no puede hacerse en la base de datos).
+Funcionalidades adicionales opcionales (solo si has completado las anteriores):
+Pruebas unitarias (al menos para una clase).
+Paginación de la lista de usuarios.
+Documentación de la API utilizando Swagger, Spring REST Docs o cualquier otra herramienta.
+Por favor, como parte integral del desafío, actualiza este documento o agrega otro con las instrucciones necesarias para compilar, ejecutar o probar el proyecto. Por ejemplo, si se requiere una base de datos externa, proporciona los pasos necesarios para prepararla previamente, preferiblemente utilizando Docker u otra solución. No obstante, se prefiere el uso de una base de datos en memoria integrada para mayor simplicidad.
+
+
+📂 src/main/java/com/miapp/
+  ├── 📂 domain/                          
+  │     ├── 📂 model/                    
+  │     │     ├── User.java               # 📌 Modelo de usuario en el dominio
+  │     │     ├── UserTree.java           # 📌 Modelo del árbol de usuarios
+  │     ├── 📂 common/                    
+  │     │     ├── Gender.java             # 📌 Enum para género
+  │     ├── 📂 exception/                 
+  │     │     ├── UserNotFoundException.java # 📌 Excepción personalizada
+  │
+  ├── 📂 port/                             
+  │     ├── 📂 inbound/                   
+  │     │     ├── UserServicePort.java    # 📌 Interface de casos de uso consolidados
+  │     ├── 📂 outbound/                  
+  │     │     ├── UserRepositoryPort.java # 📌 Interface para la persistencia
+  │     │     ├── RandomUserApiPort.java  # 📌 Interface para API de generación de usuarios
+  │
+  ├── 📂 application/                      
+  │     ├── UserService.java              # 📌 Casos de uso consolidados
+  │     ├── 📂 mapper/                    
+  │     │     ├── UserMapper.java         # 📌 Mapper DTO ↔ Dominio
+  │
+  ├── 📂 adapter/                          
+  │     ├── 📂 inbound/                   
+  │     │     ├── 📂 rest/               
+  │     │     │     ├── UserController.java   # 📌 Controlador REST
+  │     │     │     ├── 📂 dto/               
+  │     │     │     │     ├── CustomUserDTO.java
+  │     │     │     │     ├── UserTreeDTO.java
+  │     │     │     ├── 📂 mapper/            
+  │     │     │     │     ├── GeneratedUserMapper.java # 📌 Mapper de OpenAPI a DTO
+  │     ├── 📂 outbound/                 
+  │     │     ├── 📂 persistence/       
+  │     │     │     ├── UserEntity.java         # 📌 Entidad JPA
+  │     │     │     ├── UserRepositoryAdapter.java # 📌 Implementación del repositorio
+  │     │     │     ├── UserEntityMapper.java   # 📌 Mapper Dominio ↔ Persistencia
+  │     │     │     ├── JpaUserRepository.java  # 📌 Interface JPA Repository
+  │     │     ├── 📂 restclient/        
+  │     │     │     ├── RandomUserApiAdapter.java # 📌 Cliente API externa
+
+
+
+
+

@@ -54,3 +54,8 @@ Extra optional features (only if you are done with the previous features):
 
 Please, as an integral part of the challenge, update this document or add another one with the instructions required to build, run or test the project. As an example, if any external database is required, provide the required steps to prepare it beforehand, using docker or any other solution if possible, although using an integrated in memory database is preferred for simplicity.
 
+## Instrucion to run application
+From the command line, execute: `mvn clean install`
+Once the application is compiled, you can execute:`mvn spring-boot:run`
+Once the application is started, you can access the database through: http://localhost:8080/h2-console
+Additionally, the API documentation is provided through: http://localhost:8080/swagger-ui/index.html
